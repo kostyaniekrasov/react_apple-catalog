@@ -24,6 +24,8 @@ The project leverages multiple modern web development technologies and packages.
 
 #### Smooth transitions with react-transition-group
 
+#### Theme switching using React Context
+
 ## What I learned
 
 #### How to integrate and manage multi-language support in a React application using i18next.
@@ -39,6 +41,8 @@ The project leverages multiple modern web development technologies and packages.
 #### Enhancing performance by implementing debouncing techniques using lodash.debounce.
 
 #### Adding smooth UI transitions and animations with react-transition-group.
+
+#### Managing and implementing theme switching using the React Context.
 
 ## Requirements
 
