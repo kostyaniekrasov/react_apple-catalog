@@ -13,7 +13,7 @@ export const HeaderSlider: React.FC = () => {
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     arrows: false,
     adaptiveHeight: true,
     className: 'banner__slider',
