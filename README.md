@@ -1,6 +1,8 @@
 # React Apple Catalog with Typescript, SCSS and other packages.
 
 - [DEMO LINK](https://kostyaniekrasov.github.io/react_apple-catalog/)
+- [DESIGN LIGHT](https://www.figma.com/design/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0-1&t=Neeq3js03OhKRDIj-0)
+- [DESIGN DARK](https://www.figma.com/design/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark?node-id=0-1&t=pFcfSbcEnt9EiaXW-0)
 
 ## Project Description
 
