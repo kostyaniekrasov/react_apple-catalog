@@ -6,9 +6,9 @@
 
 ## Project Description
 
-This is a responsive phone catalog application built with React.
-It allows users to browse through various phone models, view detailed information, and filter the phones by different criteria.
-The project leverages multiple modern web development technologies and packages.
+It's a responsive product catalog app built with React. 
+It allows users to view different models of phones, tablets, accessories, view detailed information, add products to favorites, cart and filter products according to various criteria. 
+The project uses numerous modern technologies and web development packages.
 
 ## Features
 
