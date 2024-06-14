@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
           </div>
           <div className="footer__list">
             <Link
-              to={'https://github.com/mate-academy/react_phone-catalog'}
+              to={'https://github.com/kostyaniekrasov/react_apple-catalog'}
               target="_blank"
               className="footer__list--link uppercase"
             >
