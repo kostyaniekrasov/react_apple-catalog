@@ -54,11 +54,15 @@ export const Navbar: React.FC = () => {
   };
 
   const debouncedSearch = debounce((val: string) => {
+    const newParams: SearchParams = { query };
+
     if (val.trim() === '') {
-      setSearchParams({});
+      newParams.query = null;
     } else {
-      setSearchWith({ query: val });
+      newParams.query = val;
     }
+
+    setSearchWith(newParams);
   }, 500);
 
   const handleSearchDebounced = (e: React.ChangeEvent<HTMLInputElement>) => {

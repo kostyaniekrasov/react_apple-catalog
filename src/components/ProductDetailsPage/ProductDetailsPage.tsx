@@ -16,6 +16,20 @@ export const ProductDetailsPage: React.FC = () => {
   const [isProductFound, setIsProductFound] = useState(true);
   const { t } = useTranslation();
 
+  const [namespaceId, setNamespaceId] = useState('');
+  const [color, setColor] = useState('');
+  const [capacity, setCapacity] = useState('');
+
+  const changeProducts = (
+    newNamespaceId: string,
+    newColor: string,
+    newCapacity: string,
+  ) => {
+    setNamespaceId(newNamespaceId);
+    setColor(newColor);
+    setCapacity(newCapacity);
+  };
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -31,19 +45,39 @@ export const ProductDetailsPage: React.FC = () => {
           return products.find(prod => prod.id === id);
         };
 
-        if (itemId) {
-          const phone = findProductById(phones, itemId);
-          const tablet = findProductById(tablets, itemId);
-          const accessory = findProductById(accessories, itemId);
+        const findProductByParams = (
+          products: Device[],
+          id: string,
+          newColor: string,
+          newCapacity: string,
+        ) => {
+          return products.find(
+            prod =>
+              prod.namespaceId === id &&
+              prod.color === newColor &&
+              prod.capacity === newCapacity,
+          );
+        };
 
-          const foundProduct = phone || tablet || accessory;
+        let foundProduct: Device | undefined;
 
-          if (!!foundProduct) {
-            setProduct(foundProduct);
-          }
-
-          setIsProductFound(!!foundProduct);
+        if (itemId && color === '' && capacity === '' && namespaceId === '') {
+          foundProduct =
+            findProductById(phones, itemId) ||
+            findProductById(tablets, itemId) ||
+            findProductById(accessories, itemId);
+        } else if (color || capacity || namespaceId) {
+          foundProduct =
+            findProductByParams(phones, namespaceId, color, capacity) ||
+            findProductByParams(tablets, namespaceId, color, capacity) ||
+            findProductByParams(accessories, namespaceId, color, capacity);
         }
+
+        if (foundProduct) {
+          setProduct(foundProduct);
+        }
+
+        setIsProductFound(!!foundProduct);
       } finally {
         setIsLoading(false);
       }
@@ -55,7 +89,7 @@ export const ProductDetailsPage: React.FC = () => {
       setIsProductFound(false);
       setProduct(null);
     }
-  }, [itemId]);
+  }, [itemId, capacity, color, namespaceId]);
 
   useEffect(() => {
     document.title = product?.name || 'Product details';
@@ -156,6 +190,7 @@ export const ProductDetailsPage: React.FC = () => {
               <MainControl
                 product={product}
                 className="DetailsPage__top--main-control"
+                changeProducts={changeProducts}
               />
             </div>
 

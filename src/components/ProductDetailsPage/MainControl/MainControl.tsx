@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Device } from '../../../types/device';
 import './MainControl.scss';
 import classNames from 'classnames';
@@ -8,12 +8,25 @@ import { useTranslation } from 'react-i18next';
 type Props = {
   product: Device;
   className?: string;
+  changeProducts: (
+    newNamespaceId: string,
+    newColor: string,
+    newCapacity: string,
+  ) => void;
 };
 
-export const MainControl: React.FC<Props> = ({ product, className = '' }) => {
-  const [selectedColor, setSelectedColor] = useState('');
-  const [selectedCapacity, setSelectedCapacity] = useState('');
+export const MainControl: React.FC<Props> = ({
+  product,
+  className = '',
+  changeProducts,
+}) => {
+  const [selectedColor, setSelectedColor] = useState(product.color);
+  const [selectedCapacity, setSelectedCapacity] = useState(product.capacity);
   const { t } = useTranslation();
+
+  useEffect(() => {
+    changeProducts(product.namespaceId, selectedColor, selectedCapacity);
+  }, [selectedColor, selectedCapacity, product.namespaceId, changeProducts]);
 
   const handleColorPick = (color: string) => {
     setSelectedColor(color);
@@ -25,11 +38,6 @@ export const MainControl: React.FC<Props> = ({ product, className = '' }) => {
 
   const handleOnSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-  };
-
-  const newProduct = {
-    ...product,
-    capacity: selectedCapacity || product.capacity,
   };
 
   return (
@@ -89,7 +97,7 @@ export const MainControl: React.FC<Props> = ({ product, className = '' }) => {
 
       <div className="line line--mb32"></div>
 
-      <ProductCard device={newProduct} className="Main-Control__bottom" />
+      <ProductCard device={product} className="Main-Control__bottom" />
     </form>
   );
 };
