@@ -65,7 +65,7 @@ export const HeaderSlider: React.FC = () => {
                   </p>
                 </div>
                 <Link
-                  to="products/phones"
+                  to="products/tablets"
                   className="slide-image__form--button button"
                 >
                   Order now
@@ -90,7 +90,7 @@ export const HeaderSlider: React.FC = () => {
                   </p>
                 </div>
                 <Link
-                  to="products/phones"
+                  to="products/accessories"
                   className="slide-image__form--button button"
                 >
                   Order now
