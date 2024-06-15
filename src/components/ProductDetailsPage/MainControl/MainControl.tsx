@@ -25,8 +25,20 @@ export const MainControl: React.FC<Props> = ({
   const { t } = useTranslation();
 
   useEffect(() => {
-    changeProducts(product.namespaceId, selectedColor, selectedCapacity);
-  }, [selectedColor, selectedCapacity, product.namespaceId, changeProducts]);
+    if (
+      selectedCapacity !== product.capacity ||
+      selectedColor !== product.color
+    ) {
+      changeProducts(product.namespaceId, selectedColor, selectedCapacity);
+    }
+  }, [
+    selectedColor,
+    selectedCapacity,
+    product.namespaceId,
+    changeProducts,
+    product.capacity,
+    product.color,
+  ]);
 
   const handleColorPick = (color: string) => {
     setSelectedColor(color);
